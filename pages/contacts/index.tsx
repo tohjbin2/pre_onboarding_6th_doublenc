@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 
 function index() {
-  export async function getStaticProps() {
+  // export Async function getStaticProps() {
     const API = '';
-    const res = await Axios.get();
+    const res = await axios.get(API);
     const data = res.data;
 
     return {
