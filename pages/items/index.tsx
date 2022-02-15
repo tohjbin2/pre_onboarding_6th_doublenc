@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 */
 
-function index() {
+function Index() {
   const [toastModal, setToastModal] = useState(false);
   const [optText, setOptText] = useState(false);
 
@@ -28,7 +28,7 @@ function index() {
     setToastModal(true);
     setOptText(true);
   };
-  const closeModal = e => {
+  const closeModal = (e: any) => {
     e.preventDefault();
     setToastModal(false);
     setOptText(false);
@@ -71,4 +71,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
