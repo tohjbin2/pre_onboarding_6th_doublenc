@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Nav from '../components/Nav/Nav';
 import { GlobalStyle } from '../styles/Globalstyle';
 import AppLayout from '../components/AppLayout/AppLayout';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
