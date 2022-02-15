@@ -62,7 +62,9 @@ function Index() {
       {toastModal && (
         <Toast
           closeModalBtn={closeModal}
-          // date={date}
+          date={0}
+          price={0}
+          rate={0} // date={date}
           // price={price}
           // rate={rate}
         />
