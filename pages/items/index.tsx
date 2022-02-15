@@ -1,7 +1,13 @@
 import React from 'react';
+import * as S from './index.style';
 
 function index() {
-  return <div>index</div>;
+  return (
+    <S.ItemsSection>
+      <S.BarSection />
+      <S.ContentsSection></S.ContentsSection>
+    </S.ItemsSection>
+  );
 }
 
 export default index;
