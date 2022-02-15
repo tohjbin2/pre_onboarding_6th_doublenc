@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 */
 
-function index() {
+function Index() {
   const [toastModal, setToastModal] = useState(false);
   const [optText, setOptText] = useState(false);
 
@@ -73,4 +73,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
