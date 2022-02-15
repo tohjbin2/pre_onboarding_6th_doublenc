@@ -43,5 +43,5 @@ export const CategoryImg = styled.img`
 export const CategoryName = styled.p`
   padding: 0 0.5rem;
   margin-top: 10px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 `;
