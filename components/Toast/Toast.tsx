@@ -1,6 +1,7 @@
 import * as S from './Toast.style';
 
-function Toast({ closeModalBtn, date, price, rate }) {
+
+function Toast({ {closeModalBtn}: {closeModalBtn:any}, {date}:{date:any}, {price}:{price:any}, {rate}:{rate:any} }) {
   return (
     <S.Background>
       <S.ToastSection>
