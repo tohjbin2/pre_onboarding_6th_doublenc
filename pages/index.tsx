@@ -1,122 +1,98 @@
-import type { NextPage } from 'next';
-import Link from 'next/link';
-import React from 'react';
-import styled from 'styled-components';
-import ConItem from '../components/ConItem/ConItem';
+import React, { useState } from 'react';
+import type { GetStaticProps, NextPage } from 'next';
+import axios from 'axios';
+import * as S from './index.style';
 
-function Home({ categoryData }: { categoryData: any }) {
-  const conCategoryData = categoryData.conCategory1s;
-  // console.log(conCategoryData);
+import ConItem from '../components/ConItem/ConItem';
+import IconContainer from '../components/IconContainer/IconContainer';
+
+import { COMPANY_TERM } from '../shared/constants';
+import { COMPANY_INFO } from '../shared/constants';
+
+import { MdExpandMore } from 'react-icons/md';
+
+function Home({
+  conCategoryData,
+  conSoonData,
+}: {
+  conCategoryData: any;
+  conSoonData: any;
+}) {
+  const [isInfoOpen, setInfoOpen] = useState(false);
+
+  const handleInfoOpen = () => {
+    setInfoOpen(!isInfoOpen);
+  };
 
   return (
-    <HomeContainer>
-      <HomeWrapper>
-        <IconContainer>
-          <IconWrapper>
-            {conCategoryData?.map((el: any) => {
-              return (
-                <Icon key={el.id}>
-                  <Link href="/">
-                    <CategoryWrapper>
-                      <CategoryImg src={el.imageUrl} />
-                      <CategoryName>{el.name}</CategoryName>
-                    </CategoryWrapper>
-                  </Link>
-                </Icon>
-              );
+    <S.HomeContainer>
+      <IconContainer data={conCategoryData} />
+      <S.TextWrapper>
+        <S.Title>놓치지 마세요</S.Title>
+        <S.Subtitle>오늘의 땡처리콘</S.Subtitle>
+      </S.TextWrapper>
+      {conSoonData?.map((el: any) => {
+        return (
+          <ConItem
+            key={el.id}
+            imageUrl={el.imageUrl}
+            conCategory2={el.conCategory2.name}
+            name={el.name}
+            discountRate={el.discountRate}
+            minSellingPrice={el.minSellingPrice}
+            originalPrice={el.originalPrice}
+          />
+        );
+      })}
+      <S.TermAndInfoWrapper>
+        <S.TermWrapper>
+          {COMPANY_TERM.map((el: string, idx: number) => {
+            return <S.Term key={idx}>{el}</S.Term>;
+          })}
+        </S.TermWrapper>
+        <S.CompanyInfoWrapper>
+          <S.CompanyNameWrapper onClick={handleInfoOpen}>
+            <S.CompanyName>(주) 더블엔씨</S.CompanyName>
+            {!isInfoOpen ? (
+              <MdExpandMore
+                style={{
+                  fontSize: '24px',
+                  transition: 'transform ease 0.5s',
+                }}
+              />
+            ) : (
+              <MdExpandMore
+                style={{
+                  fontSize: '24px',
+                  transform: 'rotate(180deg)',
+                  transition: 'transform ease 0.5s',
+                }}
+              />
+            )}
+          </S.CompanyNameWrapper>
+          {isInfoOpen &&
+            COMPANY_INFO.map((el: string, idx: number) => {
+              return <S.Info key={idx}>{el}</S.Info>;
             })}
-          </IconWrapper>
-        </IconContainer>
-        <TextWrapper>
-          <Title>놓치지 마세요</Title>
-          <Subtitle>오늘의 땡처리콘</Subtitle>
-        </TextWrapper>
-        <ConItem />
-        <ConItem />
-        <ConItem />
-      </HomeWrapper>
-    </HomeContainer>
+        </S.CompanyInfoWrapper>
+      </S.TermAndInfoWrapper>
+    </S.HomeContainer>
   );
 }
 
-const HomeContainer = styled.div`
-  max-width: 672px;
-  margin: 0 auto;
-`;
+export const getStaticProps: GetStaticProps = async () => {
+  const res1 = await axios.get('https://api2.ncnc.app/con-category1s');
+  const categoryData = res1.data;
+  const conCategoryData = categoryData.conCategory1s;
 
-const HomeWrapper = styled.div`
-  background-color: #f1f3f4;
-`;
-
-const IconContainer = styled.section`
-  padding: 17px;
-`;
-
-const IconWrapper = styled.div`
-  width: 100%;
-`;
-
-const Icon = styled.div`
-  width: 33%;
-  height: 8rem;
-  margin: 1px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border-radius: 0.5rem;
-  background-color: white;
-`;
-
-const CategoryWrapper = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.25s ease-out;
-  }
-`;
-
-const CategoryImg = styled.img`
-  width: 43px;
-  height: 43px;
-`;
-
-const CategoryName = styled.p`
-  padding: 0 0.5rem;
-  margin-top: 10px;
-  font-size: 0.875rem;
-`;
-
-const TextWrapper = styled.div`
-  padding: 0 0 17px 17px;
-`;
-
-const Title = styled.h2`
-  font-size: 13px;
-  line-height: 15.6px;
-  font-weight: 500;
-  color: #ff5757;
-`;
-
-const Subtitle = styled.h1`
-  margin-top: 5px;
-  font-size: 16px;
-  line-height: 19.2px;
-  font-weight: 600;
-`;
-
-export const getStaticProps = async () => {
-  const res = await fetch('https://api2.ncnc.app/con-category1s');
-  const categoryData = await res.json();
+  const res2 = await axios.get('https://api2.ncnc.app/con-items/soon');
+  const soonData = res2.data;
+  const conSoonData = soonData.conItems;
 
   return {
     props: {
-      categoryData,
+      conCategoryData,
+      conSoonData,
     },
   };
 };
