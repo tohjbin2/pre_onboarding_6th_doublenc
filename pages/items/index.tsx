@@ -34,7 +34,16 @@ export const getStaticProps: GetStaticProps = async () => {
 */
 
 function index({ item }) {
-  const [toast, settoast] = useState(false);
+  const [toast, setToast] = useState(false);
+
+  const [signUpModal, setSignUpModal] = useState(false);
+  const openModal = () => {
+    setSignUpModal(true);
+  };
+  const closeModal = e => {
+    e.preventDefault();
+    setSignUpModal(false);
+  };
 
   return (
     <S.ItemsSection>
@@ -61,11 +70,19 @@ function index({ item }) {
           <S.RefundDetail>환불규정 내용</S.RefundDetail>
         </S.RefundBox>
 
-        <S.SelectToastSection>
+        <S.SelectToastSection onClick={openModal}>
           <S.ToastBtn>옵션 선택하기</S.ToastBtn>
         </S.SelectToastSection>
       </S.NoteSection>
-      <Toast />
+
+      {signUpModal && (
+        <Toast
+          closeModalBtn={closeModal}
+          // date={date}
+          // price={price}
+          // rate={rate}
+        />
+      )}
     </S.ItemsSection>
   );
 }

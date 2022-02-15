@@ -6,7 +6,7 @@ export const ItemsSection = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
+  background-color: white;
 `;
 
 // export const ItemSection = styled.div`
@@ -58,13 +58,14 @@ export const ItemsSection = styled.div`
 
 export const NoteSection = styled.div`
   /* position: absolute; */
-  width: 632px;
+  width: 672px;
   top: 219px;
-  margin: 0 30px;
-  padding: 20px 0;
+  padding: 20px;
 `;
 
-export const WarningBox = styled.div``;
+export const WarningBox = styled.div`
+  padding-left: 20px;
+`;
 export const WarningTitle = styled.div`
   margin-bottom: 5px;
   font-size: 14px;
@@ -76,7 +77,9 @@ export const WarningDetail = styled.div`
   font-size: 14px;
   line-height: 1.5;
 `;
-export const RefundBox = styled.div``;
+export const RefundBox = styled.div`
+  padding-left: 20px;
+`;
 export const RefundTitle = styled.div`
   margin-bottom: 5px;
   font-size: 14px;
@@ -99,6 +102,12 @@ export const SelectToastSection = styled.div`
   background-color: #ff5757;
   z-index: 1000;
   cursor: pointer;
+  :focus {
+    background-color: gray;
+  }
+  /* :active {
+    background-color: gray;
+  } */
 `;
 
 export const ToastBtn = styled.div`
