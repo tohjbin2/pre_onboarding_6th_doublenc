@@ -17,6 +17,7 @@ const Container = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
   background-color: #dddddd;
 `;
 

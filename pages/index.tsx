@@ -26,7 +26,7 @@ function Home({
 
   return (
     <S.HomeContainer>
-      <IconContainer data={conCategoryData} />
+      <IconContainer data={conCategoryData} from="home" />
       <S.TextWrapper>
         <S.Title>놓치지 마세요</S.Title>
         <S.Subtitle>오늘의 땡처리콘</S.Subtitle>

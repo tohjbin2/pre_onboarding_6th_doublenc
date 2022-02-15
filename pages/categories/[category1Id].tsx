@@ -57,7 +57,7 @@ function Index({
             })
           )
         ) : (
-          <IconContainer data={conCategoryData} />
+          <IconContainer data={conCategoryData} from="category" />
         )}
       </S.ContentWrapper>
     </S.Container>
