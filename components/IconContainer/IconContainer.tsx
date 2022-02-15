@@ -8,7 +8,7 @@ function IconContainer({ data }: { data: any }) {
         {data?.map((el: any) => {
           return (
             <S.Icon key={el.id}>
-              <Link href="/categories" passHref>
+              <Link href={`/categories/${el.id}`} passHref>
                 <S.CategoryWrapper>
                   <S.CategoryImg src={el.imageUrl} />
                   <S.CategoryName>{el.name}</S.CategoryName>
