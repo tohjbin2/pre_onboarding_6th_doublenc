@@ -3,63 +3,43 @@ import * as S from './index.style';
 
 import axios from 'axios';
 import ItemSection from '../../components/ItemSection/ItemSection';
+import ConItem from '../../components/ConItem/ConItem';
 import Toast from '../../components/Toast/Toast';
+import ToastTextBtn from '../../components/ToastTextBtn/ToastTextBtn';
 
-/* //MEMO: axios
-export async function getServerSideProps(context: any) {
-  const res = await axios.get(`https://api2.ncnc.app/con-items/`);
-  const data: any = res.data;
-  return {
-    item: { data },
-  };
-}
-*/
-/* //MEMO: fetch
-export const getStaticProps: GetStaticProps = async () => {
-  const res1 = await fetch('https://api2.ncnc.app/con-category1s');
-  const categoryData = await res1.json();
-
-  const res2 = await fetch('https://api2.ncnc.app/con-items/soon');
-  const soonData = await res2.json();
-
-  // console.log(soonData);
+/*
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await axios.get('https://api2.ncnc.app/con-category1s');
+  const categoryData = res.data;
 
   return {
     props: {
       categoryData,
-      soonData,
     },
   };
 };
 */
 
-function index({ item }) {
-  const [toast, setToast] = useState(false);
+function index() {
+  const [toastModal, setToastModal] = useState(false);
+  const [optText, setOptText] = useState(false);
 
-  const [signUpModal, setSignUpModal] = useState(false);
   const openModal = () => {
-    setSignUpModal(true);
+    setToastModal(true);
+    setOptText(true);
   };
   const closeModal = e => {
     e.preventDefault();
-    setSignUpModal(false);
+    setToastModal(false);
+    setOptText(false);
   };
 
   return (
     <S.ItemsSection>
-      <ItemSection />
-      {/* <S.ItemSection>
-        <S.ItemImg />
-        <S.ItemInfo>
-          <S.ItemBrand>브랜드명</S.ItemBrand>
-          <S.ItemName>상품명</S.ItemName>
-          <S.ItemPriceBox>
-            <S.DiscountRate>20%</S.DiscountRate>
-            <S.DiscountedPrice>8000원</S.DiscountedPrice>
-            <S.OriginalPrice>10000원</S.OriginalPrice>
-          </S.ItemPriceBox>
-        </S.ItemInfo>
-      </S.ItemSection> */}
+      {/*
+      <ConItem  />
+      */}
+
       <S.NoteSection>
         <S.WarningBox>
           <S.WarningTitle>유의사항</S.WarningTitle>
@@ -70,12 +50,15 @@ function index({ item }) {
           <S.RefundDetail>환불규정 내용</S.RefundDetail>
         </S.RefundBox>
 
-        <S.SelectToastSection onClick={openModal}>
-          <S.ToastBtn>옵션 선택하기</S.ToastBtn>
-        </S.SelectToastSection>
+        <S.ToastSectionBackground>
+          <S.SelectToastSection onClick={openModal}>
+            <S.ToastBtn>옵션 선택하기</S.ToastBtn>
+          </S.SelectToastSection>
+        </S.ToastSectionBackground>
       </S.NoteSection>
 
-      {signUpModal && (
+      {optText && <ToastTextBtn />}
+      {toastModal && (
         <Toast
           closeModalBtn={closeModal}
           // date={date}

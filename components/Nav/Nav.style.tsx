@@ -7,6 +7,7 @@ export const NavSection = styled.div`
   max-width: 672px;
   height: 59px;
   top: 0px;
+  border-bottom: 1px solid #eee;
   background-color: white;
   z-index: 50;
 `;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ItemsSection = styled.div`
-  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,58 +8,9 @@ export const ItemsSection = styled.div`
   background-color: white;
 `;
 
-// export const ItemSection = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 672px;
-//   border-bottom: 1px solid #eee;
-// `;
-// export const ItemImg = styled.div`
-//   width: 90px;
-//   height: 90px;
-//   margin: 17px 0 17px 17px;
-//   background-color: #f1f3f4;
-//   border-radius: 5px;
-// `;
-// export const ItemInfo = styled.div`
-//   padding: 0 20px;
-// `;
-// export const ItemBrand = styled.div`
-//   margin-bottom: 7px;
-//   color: #808080;
-//   font-size: 14px;
-// `;
-// export const ItemName = styled.div`
-//   font-size: 16px;
-//   font-weight: 600;
-// `;
-
-// export const ItemPriceBox = styled.div`
-//   margin-top: 14px;
-//   display: flex;
-//   align-items: center;
-// `;
-// export const DiscountRate = styled.div`
-//   margin-right: 10px;
-//   color: #ff5757;
-//   font-size: 16px;
-// `;
-// export const DiscountedPrice = styled.div`
-//   margin-right: 10px;
-//   font-size: 16px;
-//   font-weight: 600;
-// `;
-// export const OriginalPrice = styled.div`
-//   color: #808080;
-//   font-size: 14px;
-//   text-decoration: line-through;
-// `;
-
 export const NoteSection = styled.div`
-  /* position: absolute; */
   width: 672px;
-  top: 219px;
-  padding: 20px;
+  margin: 20px;
 `;
 
 export const WarningBox = styled.div`
@@ -90,7 +40,18 @@ export const RefundDetail = styled.div`
   font-size: 14px;
   line-height: 1.5;
 `;
-
+export const ToastSectionBackground = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  /* left: 0px; */
+  width: 672px;
+  height: 100%;
+  background-color: white;
+  z-index: -100;
+`;
 export const SelectToastSection = styled.div`
   position: fixed;
   display: flex;
@@ -102,12 +63,6 @@ export const SelectToastSection = styled.div`
   background-color: #ff5757;
   z-index: 1000;
   cursor: pointer;
-  :focus {
-    background-color: gray;
-  }
-  /* :active {
-    background-color: gray;
-  } */
 `;
 
 export const ToastBtn = styled.div`
