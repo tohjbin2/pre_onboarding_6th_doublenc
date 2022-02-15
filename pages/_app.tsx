@@ -1,7 +1,12 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Nav from '../components/Nav/Nav';
 import { GlobalStyle } from '../styles/Globalstyle';
+<<<<<<< HEAD
 
+=======
+import AppLayout from '../components/AppLayout/AppLayout';
+>>>>>>> main
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -10,7 +15,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>doublenc</title>
       </Head>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <AppLayout>
+        <Nav />
+        <Component {...pageProps} />
+      </AppLayout>
     </>
   );
 }
