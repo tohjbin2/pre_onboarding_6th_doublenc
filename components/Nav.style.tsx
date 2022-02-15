@@ -4,7 +4,6 @@ export const NavSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   max-width: 672px;
   height: 59px;
   top: 0px;
