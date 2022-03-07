@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const COMPANY_TERM = [
   '회사소개서',
   '사업/제휴 문의',
@@ -11,3 +13,41 @@ export const COMPANY_INFO = [
   '서울특별시 강남구 테헤란로 501, 4층(삼성동, 브이플렉스)',
   '고객센터: 02-6265-0018',
 ];
+
+export async function getItemInfo(paramsId: string | string[] | undefined) {
+  const request = await axios.get(
+    `https://api2.ncnc.app/con-items/${paramsId}`
+  );
+  const {
+    data: { conItem },
+  } = request;
+
+  const {
+    id,
+    name,
+    originalPrice,
+    minSellingPrice,
+    ncSellingPrice,
+    warning,
+    discountRate,
+    imageUrl,
+    options,
+  } = conItem;
+
+  const itemInfo = {
+    id,
+    name,
+    originalPrice,
+    minSellingPrice,
+    ncSellingPrice,
+    warning,
+    discountRate,
+    imageUrl,
+    options,
+    brand: conItem['conCategory2'].name,
+  };
+
+  return {
+    itemInfo,
+  };
+}
