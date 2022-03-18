@@ -29,15 +29,9 @@ https://user-images.githubusercontent.com/83998679/154163740-ca038455-5bb2-4f09-
 
 ## ✅ 과제 구현 목록
 
-**_0) 초기 환경 설정_**
-
-- Next.js, TypeScript 활용해 초기 환경을 설정함.
-
-**_1) SSG(정적생성, Server Static Generation), SSR(Server Side Rendering)을 활용한 데이터 호출_**
+**_SSG(정적생성, Server Static Generation), SSR(Server Side Rendering)을 활용한 데이터 호출_**
 
 - getStaticProps 메서드, getServerSideProps 메서드를 사용해 데이터를 호출.
-
-**_2) Next.js를 활용한 dynamic routing 및 dynamic api 호출_**
 
 <br>
 
@@ -46,9 +40,13 @@ https://user-images.githubusercontent.com/83998679/154163740-ca038455-5bb2-4f09-
 - items 페이지를 담당
 - getServerSideProps을 통한 SSR 구현 (추후 수정 예정)
 
+<br>
+
 ## 💬 과제 후기
 
 #### 첫 Next.js 사용
+추후 리팩톹링을 통해 수정해야 할 부분이 있다.
+getServerSideProps을 통해서는 랜더링이 너무 늦기 때문에 getStaticProp나 getStaticPath방식을 이용하는 방법을 찾아봐야 할 것 같다. 리팩토링 시에는 두가지 방식 모두를 시도해 보려고 한다.
 
 <br>
 
