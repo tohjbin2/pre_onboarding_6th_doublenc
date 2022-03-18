@@ -45,7 +45,7 @@ https://user-images.githubusercontent.com/83998679/154163740-ca038455-5bb2-4f09-
 ## 💬 과제 후기
 
 #### 첫 Next.js 사용
-추후 리팩톹링을 통해 수정해야 할 부분이 있다.
+추후 리팩토링을 통해 수정해야 할 부분이 있다.
 getServerSideProps을 통해서는 랜더링이 너무 늦기 때문에 getStaticProp나 getStaticPath방식을 이용하는 방법을 찾아봐야 할 것 같다. 리팩토링 시에는 두가지 방식 모두를 시도해 보려고 한다.
 
 <br>
