@@ -6,7 +6,38 @@ import ItemSection from '../../components/ItemSection/ItemSection';
 import ConItem from '../../components/ConItem/ConItem';
 import Toast from '../../components/Toast/Toast';
 import ToastTextBtn from '../../components/ToastTextBtn/ToastTextBtn';
+// import { getServerSideProps } from '../brands/[category2Id]';
 
+import { getItemInfo } from '../../shared/constants';
+
+// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+//   const id = params && params.id;
+//   const { itemInfo } = await getItemInfo(id);
+//   return {
+//     props: itemInfo,
+//   };
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params && params.id;
+  const { itemInfo } = await getItemInfo(id);
+  if (!itemInfo) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: itemInfo,
+  };
+
+  // const res = await axios.get('https://api2.ncnc.app/con-category1s');
+  // const categoryData = res.data;
+
+  // return {
+  //   props: {
+  //     categoryData,
+  //   },
+  // };
+};
 /*
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get('https://api2.ncnc.app/con-category1s');
